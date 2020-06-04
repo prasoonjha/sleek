@@ -1,0 +1,85 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card-container:not(:last-child) {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid grey;
+}
+
+.content-visible {
+  display: flex;
+}
+
+h4,
+h3 {
+  color: grey;
+  line-height: 0.2rem;
+  font-weight: 100;
+}
+
+.image-container {
+  width: 20%;
+}
+.icon-container {
+  display: inline-block;
+  font-size: 2rem;
+  color: rgb(177, 177, 177);
+  cursor: pointer;
+  position: absolute;
+  right: 2rem;
+  top: 1.5rem;
+}
+.icon-container {
+  display: inline-block;
+  font-size: 2rem;
+  color: rgb(177, 177, 177);
+  cursor: pointer;
+  position: absolute;
+  right: 2rem;
+  top: 1.5rem;
+}
+.icon-container:hover {
+  color: black;
+}
+img {
+  height: 70%;
+  width: 70%;
+  margin: 20px;
+  border: 1px solid grey;
+  border-radius: 100%;
+}
+
+.content-hidden {
+  margin-left: 20%;
+}
+.tags-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.tag {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgb(228, 228, 228);
+  color: rgb(150, 150, 150);
+  border-radius: 3px;
+}
+.tag-text {
+  margin-bottom: 15px;
+  width: 20%;
+  -webkit-appearance: none;
+  font-family: inherit;
+  padding: 0 0.5rem;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: rgb(151, 151, 151);
+  height: 28px;
+  font-size: 16px;
+  font-weight: 500;
+  background: none;
+}

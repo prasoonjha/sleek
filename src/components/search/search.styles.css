@@ -1,0 +1,14 @@
+input {
+  margin-bottom: 15px;
+  width: 100%;
+  -webkit-appearance: none;
+  font-family: inherit;
+  padding: 0 0.5rem;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: rgb(151, 151, 151);
+  height: 28px;
+  font-size: 16px;
+  font-weight: 500;
+  background: none;
+}
