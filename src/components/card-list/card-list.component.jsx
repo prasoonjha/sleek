@@ -22,11 +22,6 @@ const CardList = ({ students }) => {
       .toLowerCase()
       .includes(nameSearchString.toLowerCase())
   );
-  const filteredStudentsByTags =
-    students.tags &&
-    students.filter((student) =>
-      student.tags.includes(tagSearchString.toLowerCase())
-    );
 
   return (
     <React.Fragment>
@@ -46,4 +41,5 @@ const CardList = ({ students }) => {
 const mapStateToProps = (state) => ({
   students: state.students.students,
 });
+
 export default connect(mapStateToProps)(CardList);

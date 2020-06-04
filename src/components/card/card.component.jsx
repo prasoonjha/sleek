@@ -1,13 +1,15 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 import "./card.styles.css";
 
-const Card = (props) => {
+import { addTag } from "../../redux/students/students.actions";
+
+const Card = ({ student, addTag }) => {
   const [showGrades, setShowGrades] = useState(false);
   const [tagTextField, setTagTextField] = useState("");
-
-  const student = useRef(props.student);
 
   const clickHandler = () => {
     setShowGrades(!showGrades);
@@ -20,15 +22,9 @@ const Card = (props) => {
   const addTagHandler = (event) => {
     if (event.key === "Enter") {
       if (tagTextField) {
-        if (!student.current.tags) {
-          student.current.tags = [];
-          student.current.tags.push(tagTextField);
-        } else {
-          student.current.tags.push(tagTextField);
-        }
+        addTag(student, tagTextField);
       }
       setTagTextField("");
-      console.log(student);
     }
   };
 
@@ -36,19 +32,18 @@ const Card = (props) => {
     <div className="card-container">
       <div className="content-visible">
         <div className="image-container">
-          <img src={props.student.pic} alt="student" />
+          <img src={student.pic} alt="student" />
         </div>
         <div className="text-container">
           <h1>
-            {props.student.firstName.toUpperCase()}{" "}
-            {props.student.lastName.toUpperCase()}
+            {student.firstName.toUpperCase()} {student.lastName.toUpperCase()}
           </h1>
-          <h4>Email: {props.student.email}</h4>
-          <h4>Company: {props.student.company}</h4>
-          <h4>Skill: {props.student.skill}</h4>
+          <h4>Email: {student.email}</h4>
+          <h4>Company: {student.company}</h4>
+          <h4>Skill: {student.skill}</h4>
           <h4>
             Average:{" "}
-            {props.student.grades.reduce(
+            {student.grades.reduce(
               (accumulator, currentElem) => accumulator + Number(currentElem),
               0
             ) / 8}{" "}
@@ -61,13 +56,13 @@ const Card = (props) => {
       </div>
       {showGrades && (
         <div className="content-hidden">
-          {props.student.grades.map((grade, index) => (
+          {student.grades.map((grade, index) => (
             <h3 key={index}>
               Test {`${index + 1}`}: {grade}
             </h3>
           ))}
 
-          <div className="add-tags">
+          {/* <div className="add-tags">
             <div className="tags-container">
               {student.current.tags &&
                 student.current.tags.map((tag, index) => (
@@ -75,21 +70,24 @@ const Card = (props) => {
                     {tag}
                   </div>
                 ))}
-            </div>
+            </div> */}
 
-            <input
-              className="tag-text"
-              type="text"
-              placeholder="Add a tag"
-              value={tagTextField}
-              onChange={onChangeHandler}
-              onKeyDown={addTagHandler}
-            />
-          </div>
+          <input
+            className="tag-text"
+            type="text"
+            placeholder="Add a tag"
+            value={tagTextField}
+            onChange={onChangeHandler}
+            onKeyDown={addTagHandler}
+          />
         </div>
       )}
     </div>
   );
 };
 
-export default Card;
+const mapDispatchToProps = (dispatch) => ({
+  addTag: (student, tag) => dispatch(addTag(student, tag)),
+});
+
+export default connect(null, mapDispatchToProps)(Card);
