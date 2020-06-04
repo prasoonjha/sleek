@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { connect } from "react-redux";
 import Search from "../search/search.component";
 import Card from "../card/card.component";
 
@@ -43,4 +43,7 @@ const CardList = ({ students }) => {
   );
 };
 
-export default CardList;
+const mapStateToProps = (state) => ({
+  students: state.students.students,
+});
+export default connect(mapStateToProps)(CardList);
