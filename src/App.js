@@ -6,6 +6,7 @@ import "./styles.css";
 import CardList from "./components/card-list/card-list.component";
 
 import { fetchStudentsArray } from "./redux/students/students.actions";
+
 class App extends React.Component {
   componentDidMount() {
     const { fetchStudentsArray } = this.props;
