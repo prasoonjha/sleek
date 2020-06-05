@@ -17,11 +17,16 @@ const CardList = ({ students }) => {
     setTagSearchString(searchString);
   };
 
-  const filteredStudentsByName = students.filter((student) =>
-    (student.firstName + " " + student.lastName)
-      .toLowerCase()
-      .includes(nameSearchString.toLowerCase())
-  );
+  const filteredStudents =
+    students.filter((student) =>
+      (student.firstName + " " + student.lastName)
+        .toLowerCase()
+        .includes(nameSearchString.toLowerCase())
+    ) ||
+    (students.tags &&
+      students.filter((student) =>
+        student.tags.includes(tagSearchString.toLowerCase())
+      ));
 
   return (
     <React.Fragment>
@@ -30,7 +35,7 @@ const CardList = ({ students }) => {
         handleTagSearch={handleTagSearch}
       />
       <div className="card-list">
-        {filteredStudentsByName.map((student) => (
+        {filteredStudents.map((student) => (
           <Card key={student.id} student={student} />
         ))}
       </div>

@@ -62,24 +62,25 @@ const Card = ({ student, addTag }) => {
             </h3>
           ))}
 
-          {/* <div className="add-tags">
+          <div className="add-tags">
             <div className="tags-container">
-              {student.current.tags &&
-                student.current.tags.map((tag, index) => (
+              {student.tags &&
+                student.tags.map((tag, index) => (
                   <div className="tag" key={index}>
                     {tag}
                   </div>
                 ))}
-            </div> */}
+            </div>
 
-          <input
-            className="tag-text"
-            type="text"
-            placeholder="Add a tag"
-            value={tagTextField}
-            onChange={onChangeHandler}
-            onKeyDown={addTagHandler}
-          />
+            <input
+              className="tag-text"
+              type="text"
+              placeholder="Add a tag"
+              value={tagTextField}
+              onChange={onChangeHandler}
+              onKeyDown={addTagHandler}
+            />
+          </div>
         </div>
       )}
     </div>
